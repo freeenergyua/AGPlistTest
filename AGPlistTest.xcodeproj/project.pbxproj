@@ -15,7 +15,6 @@
 		C07183CA1C1B171D00BFC868 /* AGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07183C81C1B171D00BFC868 /* AGTableViewController.m */; };
 		C07183CD1C1B17E000BFC868 /* recipes.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07183CC1C1B17E000BFC868 /* recipes.plist */; };
 		C07183D01C1B1DF800BFC868 /* AGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */; };
-		C07183D31C1B388900BFC868 /* AGPlist.m in Sources */ = {isa = PBXBuildFile; fileRef = C07183D21C1B388900BFC868 /* AGPlist.m */; };
 		C07183D51C1B43EC00BFC868 /* rec.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07183D41C1B43EC00BFC868 /* rec.plist */; };
 /* End PBXBuildFile section */
 
@@ -33,8 +32,6 @@
 		C07183CC1C1B17E000BFC868 /* recipes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = recipes.plist; sourceTree = "<group>"; };
 		C07183CE1C1B1DF800BFC868 /* AGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTableViewCell.h; sourceTree = "<group>"; };
 		C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTableViewCell.m; sourceTree = "<group>"; };
-		C07183D11C1B388900BFC868 /* AGPlist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGPlist.h; sourceTree = "<group>"; };
-		C07183D21C1B388900BFC868 /* AGPlist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGPlist.m; sourceTree = "<group>"; };
 		C07183D41C1B43EC00BFC868 /* rec.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rec.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -74,8 +71,6 @@
 				C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */,
 				C07183B31C1B16EB00BFC868 /* AppDelegate.h */,
 				C07183B41C1B16EB00BFC868 /* AppDelegate.m */,
-				C07183D11C1B388900BFC868 /* AGPlist.h */,
-				C07183D21C1B388900BFC868 /* AGPlist.m */,
 				C07183B91C1B16EB00BFC868 /* Main.storyboard */,
 				C07183BC1C1B16EB00BFC868 /* Assets.xcassets */,
 				C07183BE1C1B16EB00BFC868 /* LaunchScreen.storyboard */,
@@ -170,7 +165,6 @@
 				C07183B51C1B16EB00BFC868 /* AppDelegate.m in Sources */,
 				C07183B21C1B16EB00BFC868 /* main.m in Sources */,
 				C07183CA1C1B171D00BFC868 /* AGTableViewController.m in Sources */,
-				C07183D31C1B388900BFC868 /* AGPlist.m in Sources */,
 				C07183D01C1B1DF800BFC868 /* AGTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -320,6 +314,7 @@
 				C07183C61C1B16EB00BFC868 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
