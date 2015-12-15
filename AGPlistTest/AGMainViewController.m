@@ -10,15 +10,14 @@
 
 @interface AGMainViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *officerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorizationCodeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rankLabel;
-@property (weak, nonatomic) IBOutlet UILabel *warpDriveLabel;
-@property (weak, nonatomic) IBOutlet UILabel *warpFactorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *favoriteTeaLabel;
-@property (weak, nonatomic) IBOutlet UILabel *favoriteCaptainLabel;
-@property (weak, nonatomic) IBOutlet UILabel *favoriteGadgetLabel;
-@property (weak, nonatomic) IBOutlet UILabel *favoriteAlienLabel;
+@property (weak, nonatomic) IBOutlet UILabel *autoUpdateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *timeCookLabel;
+@property (weak, nonatomic) IBOutlet UILabel *serverUrl;
+@property (weak, nonatomic) IBOutlet UILabel *serverPortName;
+
 
 @end
 
@@ -26,19 +25,17 @@
 
 - (void)refreshFields {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.officerLabel.text = [defaults objectForKey:kOfficerKey];
+    self.userLabel.text = [defaults objectForKey:kUserKey];
     self.authorizationCodeLabel.text = [defaults
                                         objectForKey:kAuthorizationCodeKey];
     self.rankLabel.text = [defaults objectForKey:kRankKey];
-    self.warpDriveLabel.text = [defaults boolForKey:kWarpDriveKey]
-                                ? @"Engaged" : @"Disabled";
-    self.warpFactorLabel.text = [[defaults objectForKey:kWarpFactorKey]
+    self.autoUpdateLabel.text = [defaults boolForKey:kAutoUpdateKey]
+                                ? @"YES" : @"Disabled";
+    self.timeCookLabel.text = [[defaults objectForKey:kTimeCookKey]
                                  stringValue];
-    self.favoriteTeaLabel.text = [defaults objectForKey:kFavoriteTeaKey];
-    self.favoriteCaptainLabel.text = [defaults objectForKey:kFavoriteCaptainKey];
-    self.favoriteGadgetLabel.text = [defaults objectForKey:kFavoriteGadgetKey];
-    self.favoriteAlienLabel.text = [defaults objectForKey:kFavoriteAlienKey];
-}
+    self.serverUrl.text = [defaults objectForKey:kServerURLKey];
+    self.serverPortName.text = [defaults objectForKey:kServerPortNumberKey];
+    }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

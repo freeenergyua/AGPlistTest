@@ -8,13 +8,13 @@
 
 #import "AGFlipsideViewController.h"
 
-#define kOfficerKey                    @"officer"
+#define kUserKey                       @"user"
 #define kAuthorizationCodeKey          @"authorizationCode"
 #define kRankKey                       @"rank"
-#define kWarpDriveKey                  @"warp"
-#define kWarpFactorKey                 @"warpFactor"
-#define kFavoriteTeaKey                @"favoriteTea"
-#define kFavoriteCaptainKey            @"favoriteCaptain"
+#define kAutoUpdateKey                 @"autoUpdate"
+#define kTimeCookKey                   @"timeCookFactor"
+#define kServerURLKey                  @"serverUrl"
+#define kServerPortNumberKey           @"portName"
 #define kFavoriteGadgetKey             @"favoriteGadget"
 #define kFavoriteAlienKey              @"favoriteAlien"
 

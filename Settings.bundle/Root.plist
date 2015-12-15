@@ -54,7 +54,7 @@
 			<key>Title</key>
 			<string>AutoUpdate</string>
 			<key>Key</key>
-			<string>autoUpdate</string>
+			<string>kAutoUpdateKey</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
@@ -68,7 +68,7 @@
 			<key>Type</key>
 			<string>PSSliderSpecifier</string>
 			<key>Key</key>
-			<string>sliderKey</string>
+			<string>kTimeCookKey</string>
 			<key>DefaultValue</key>
 			<integer>1</integer>
 			<key>MinimumValue</key>

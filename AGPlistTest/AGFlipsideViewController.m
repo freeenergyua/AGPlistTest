@@ -39,20 +39,20 @@
 
 - (void)refreshFields {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.engineSwitch.on = [defaults boolForKey:kWarpDriveKey];
-    self.warpFactorSlider.value = [defaults floatForKey:kWarpFactorKey];
+    self.autoUpdateSwitch.on = [defaults boolForKey:kAutoUpdateKey];
+    self.timeCookSlider.value = [defaults floatForKey:kTimeCookKey];
     
 }
 
 - (IBAction)engineSwitchTapped {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setBool:self.engineSwitch.on forKey:kWarpDriveKey];
+    [defaults setBool:self.autoUpdateSwitch.on forKey:kAutoUpdateKey];
     [defaults synchronize];
 }
 
 - (IBAction)warpSliderTouched {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setFloat:self.warpFactorSlider.value forKey:kWarpFactorKey];
+    [defaults setFloat:self.timeCookSlider.value forKey:kTimeCookKey];
     [defaults synchronize];
 }
 

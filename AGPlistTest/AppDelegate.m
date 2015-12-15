@@ -35,16 +35,44 @@
     NSString *value = [plistDictionary objectForKey:@"title"];
     NSLog(@"value is %@", value);
     
-    //work with user Defaults
     
-    NSDictionary *defaults = @{kWarpDriveKey : @YES,
-                               kWarpFactorKey : @5,
-                               kFavoriteAlienKey : @"Vulcan"};
+   //регистрирую Root plist
+    [self registerDefaultsFromSettingsBundleWithPlist:@"Root"];
     
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+//    NSDictionary *defaultsSettings = @{kAutoUpdateKey : @YES,
+//                               kTimeCookKey : @5,
+//                               kFavoriteAlienKey : @"Vulcan",
+//                               kServerURLKey : @"google.com",
+//                                kServerPortNumberKey: @"8880"};
+//    
+//    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsSettings];
     
 
    return YES;
+}
+
+- (void)registerDefaultsFromSettingsBundleWithPlist:(NSString *)plist {
+    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
+    if(!settingsBundle) {
+        NSLog(@"Could not find Settings.bundle");
+        return;
+    }
+    NSString *bundle = [NSString stringWithFormat:@"%@.plist",plist];
+    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:bundle]];
+    NSArray *preferences = [settings objectForKey:@"Preference Items"];
+    
+    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
+    for(NSDictionary *prefSpecification in preferences) {
+        NSString *key = [prefSpecification objectForKey:@"Key"];
+        if(key) {
+            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+        }
+    }
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
+    //[defaultsToRegister release];
+    
+    //http://stackoverflow.com/questions/1431148/iphone-app-how-to-get-default-value-from-root-plist
 }
 
 

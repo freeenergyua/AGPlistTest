@@ -17,8 +17,8 @@
 @interface AGFlipsideViewController : UIViewController
 
 @property (weak, nonatomic) id <AGFlipsideViewControllerDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UISwitch *engineSwitch;
-@property (weak, nonatomic) IBOutlet UISlider *warpFactorSlider;
+@property (weak, nonatomic) IBOutlet UISwitch *autoUpdateSwitch;
+@property (weak, nonatomic) IBOutlet UISlider *timeCookSlider;
 
 - (void)refreshFields;
 - (IBAction)engineSwitchTapped;
