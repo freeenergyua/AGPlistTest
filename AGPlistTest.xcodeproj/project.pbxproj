@@ -15,7 +15,7 @@
 		C07183CA1C1B171D00BFC868 /* AGTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C07183C81C1B171D00BFC868 /* AGTableViewController.m */; };
 		C07183CD1C1B17E000BFC868 /* recipes.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07183CC1C1B17E000BFC868 /* recipes.plist */; };
 		C07183D01C1B1DF800BFC868 /* AGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */; };
-		C07183D51C1B43EC00BFC868 /* rec.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07183D41C1B43EC00BFC868 /* rec.plist */; };
+		C0A339FA1C20283C00773C99 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C0A339F91C20283C00773C99 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		C07183CC1C1B17E000BFC868 /* recipes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = recipes.plist; sourceTree = "<group>"; };
 		C07183CE1C1B1DF800BFC868 /* AGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTableViewCell.h; sourceTree = "<group>"; };
 		C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTableViewCell.m; sourceTree = "<group>"; };
-		C07183D41C1B43EC00BFC868 /* rec.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = rec.plist; sourceTree = "<group>"; };
+		C0A339F91C20283C00773C99 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +49,7 @@
 		C07183A41C1B16EB00BFC868 = {
 			isa = PBXGroup;
 			children = (
+				C0A339F91C20283C00773C99 /* Settings.bundle */,
 				C07183AF1C1B16EB00BFC868 /* AGPlistTest */,
 				C07183AE1C1B16EB00BFC868 /* Products */,
 			);
@@ -85,7 +86,6 @@
 			children = (
 				C07183CC1C1B17E000BFC868 /* recipes.plist */,
 				C07183B11C1B16EB00BFC868 /* main.m */,
-				C07183D41C1B43EC00BFC868 /* rec.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -149,8 +149,8 @@
 			files = (
 				C07183C01C1B16EB00BFC868 /* LaunchScreen.storyboard in Resources */,
 				C07183BD1C1B16EB00BFC868 /* Assets.xcassets in Resources */,
-				C07183D51C1B43EC00BFC868 /* rec.plist in Resources */,
 				C07183CD1C1B17E000BFC868 /* recipes.plist in Resources */,
+				C0A339FA1C20283C00773C99 /* Settings.bundle in Resources */,
 				C07183BB1C1B16EB00BFC868 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

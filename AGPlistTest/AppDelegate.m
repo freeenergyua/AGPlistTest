@@ -20,20 +20,20 @@
     
     NSString *aDocumentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     
-    NSString *aFilePath = [NSString stringWithFormat:@"%@/rec.plist", aDocumentsDirectory];
+    NSString *aFilePath = [NSString stringWithFormat:@"%@/recipes.plist", aDocumentsDirectory];
 
     NSMutableArray *plistArray = [[NSMutableArray alloc] initWithContentsOfFile:aFilePath];
-    NSLog(@"%@",plistArray);
+    NSLog(@"recipec.plist array %@",plistArray);
     
     
     
     NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *pathToFile = [mainBundle pathForResource:@"rec" ofType:@"plist"];
+    NSString *pathToFile = [mainBundle pathForResource:@"recipes" ofType:@"plist"];
 
-    NSMutableDictionary *md = [[NSMutableDictionary alloc] initWithContentsOfFile:pathToFile];
-    [md setValue:@"yes" forKey:@"title"];
-    [md writeToFile:pathToFile atomically:YES];
-    NSString *value = [md objectForKey:@"title"];
+    NSMutableDictionary *plistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:pathToFile];
+    [plistDictionary setValue:@"yes" forKey:@"title"];
+    [plistDictionary writeToFile:pathToFile atomically:YES];
+    NSString *value = [plistDictionary objectForKey:@"title"];
     NSLog(@"value is %@", value);
 
    return YES;
