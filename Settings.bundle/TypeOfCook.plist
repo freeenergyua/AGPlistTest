@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Strings Filename</key>
+	<string>TypeOfCook</string>
+	<key>Preference items</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string></string>
+			<key>Type</key>
+			<string></string>
+		</dict>
+		<string>Пароварка</string>
+		<string>Суповарка</string>
+		<string>Скороварка</string>
+		<string>ТЭН</string>
+	</array>
+</dict>
+</plist>

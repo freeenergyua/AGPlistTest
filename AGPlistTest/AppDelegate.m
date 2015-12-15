@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "AGMainViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,9 +24,7 @@
     NSString *aFilePath = [NSString stringWithFormat:@"%@/recipes.plist", aDocumentsDirectory];
 
     NSMutableArray *plistArray = [[NSMutableArray alloc] initWithContentsOfFile:aFilePath];
-    NSLog(@"recipec.plist array %@",plistArray);
-    
-    
+    NSLog(@"recipes.plist array %@",plistArray);
     
     NSBundle *mainBundle = [NSBundle mainBundle];
     NSString *pathToFile = [mainBundle pathForResource:@"recipes" ofType:@"plist"];
@@ -35,6 +34,15 @@
     [plistDictionary writeToFile:pathToFile atomically:YES];
     NSString *value = [plistDictionary objectForKey:@"title"];
     NSLog(@"value is %@", value);
+    
+    //work with user Defaults
+    
+    NSDictionary *defaults = @{kWarpDriveKey : @YES,
+                               kWarpFactorKey : @5,
+                               kFavoriteAlienKey : @"Vulcan"};
+    
+    [[NSUserDefaults standardUserDefaults] registerDefaults:defaults];
+    
 
    return YES;
 }

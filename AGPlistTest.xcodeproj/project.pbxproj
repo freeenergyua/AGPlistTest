@@ -16,6 +16,8 @@
 		C07183CD1C1B17E000BFC868 /* recipes.plist in Resources */ = {isa = PBXBuildFile; fileRef = C07183CC1C1B17E000BFC868 /* recipes.plist */; };
 		C07183D01C1B1DF800BFC868 /* AGTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */; };
 		C0A339FA1C20283C00773C99 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C0A339F91C20283C00773C99 /* Settings.bundle */; };
+		C0A33A011C2061B300773C99 /* AGMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A339FE1C2061B300773C99 /* AGMainViewController.m */; };
+		C0A33A021C2061B300773C99 /* AGFlipsideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C0A33A001C2061B300773C99 /* AGFlipsideViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,10 @@
 		C07183CE1C1B1DF800BFC868 /* AGTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGTableViewCell.h; sourceTree = "<group>"; };
 		C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGTableViewCell.m; sourceTree = "<group>"; };
 		C0A339F91C20283C00773C99 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		C0A339FD1C2061B300773C99 /* AGMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGMainViewController.h; sourceTree = "<group>"; };
+		C0A339FE1C2061B300773C99 /* AGMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGMainViewController.m; sourceTree = "<group>"; };
+		C0A339FF1C2061B300773C99 /* AGFlipsideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AGFlipsideViewController.h; sourceTree = "<group>"; };
+		C0A33A001C2061B300773C99 /* AGFlipsideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AGFlipsideViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +78,10 @@
 				C07183CF1C1B1DF800BFC868 /* AGTableViewCell.m */,
 				C07183B31C1B16EB00BFC868 /* AppDelegate.h */,
 				C07183B41C1B16EB00BFC868 /* AppDelegate.m */,
+				C0A339FD1C2061B300773C99 /* AGMainViewController.h */,
+				C0A339FE1C2061B300773C99 /* AGMainViewController.m */,
+				C0A339FF1C2061B300773C99 /* AGFlipsideViewController.h */,
+				C0A33A001C2061B300773C99 /* AGFlipsideViewController.m */,
 				C07183B91C1B16EB00BFC868 /* Main.storyboard */,
 				C07183BC1C1B16EB00BFC868 /* Assets.xcassets */,
 				C07183BE1C1B16EB00BFC868 /* LaunchScreen.storyboard */,
@@ -166,6 +176,8 @@
 				C07183B21C1B16EB00BFC868 /* main.m in Sources */,
 				C07183CA1C1B171D00BFC868 /* AGTableViewController.m in Sources */,
 				C07183D01C1B1DF800BFC868 /* AGTableViewCell.m in Sources */,
+				C0A33A021C2061B300773C99 /* AGFlipsideViewController.m in Sources */,
+				C0A33A011C2061B300773C99 /* AGMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
