@@ -117,18 +117,8 @@
 			<string>Type of Multicook</string>
 			<key>Key</key>
 			<string>PSChildPaneSpecifier</string>
-			<key>DefaultValue</key>
-			<string></string>
 			<key>File</key>
 			<string>TypeOfCook</string>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-			<key>Title</key>
-			<string>Localization EN</string>
-			<key>File</key>
-			<string>LocalizationEN</string>
 		</dict>
 	</array>
 </dict>

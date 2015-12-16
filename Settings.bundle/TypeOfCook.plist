@@ -2,20 +2,32 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Strings Filename</key>
-	<string>TypeOfCook</string>
-	<key>Preference items</key>
+	<key>PreferenceSpecifiers</key>
 	<array>
-		<dict>
-			<key>Title</key>
-			<string></string>
-			<key>Type</key>
-			<string></string>
-		</dict>
-		<string>Пароварка</string>
-		<string>Суповарка</string>
-		<string>Скороварка</string>
-		<string>ТЭН</string>
+        <dict>
+            <key>Type</key>
+            <string>PSMultiValueSpecifier</string>
+            <key>Title</key>
+            <string>Type Of Multi</string>
+            <key>Titles</key>
+            <array>
+                <string>Скороварка</string>
+                <string>ТЭН</string>
+                <string>пароварка</string>
+                <string>мультиварка</string>
+            </array>
+            <key>Values</key>
+            <array>
+                <string>Скороварка</string>
+                <string>ТЭН</string>
+                <string>пароварка</string>
+                <string>мультиварка</string>
+            </array>
+            <key>Key</key>
+            <string>typeCook</string>
+            <key>DefaultValue</key>
+            <string>ТЭН</string>
+        </dict>
 	</array>
 </dict>
 </plist>

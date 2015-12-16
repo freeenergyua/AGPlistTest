@@ -15,64 +15,36 @@
 
 @implementation AppDelegate
 
-
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    
-    NSString *aDocumentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
-    
-    NSString *aFilePath = [NSString stringWithFormat:@"%@/recipes.plist", aDocumentsDirectory];
-
-    NSMutableArray *plistArray = [[NSMutableArray alloc] initWithContentsOfFile:aFilePath];
-    NSLog(@"recipes.plist array %@",plistArray);
-    
-    NSBundle *mainBundle = [NSBundle mainBundle];
-    NSString *pathToFile = [mainBundle pathForResource:@"recipes" ofType:@"plist"];
-
-    NSMutableDictionary *plistDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:pathToFile];
-    [plistDictionary setValue:@"yes" forKey:@"title"];
-    [plistDictionary writeToFile:pathToFile atomically:YES];
-    NSString *value = [plistDictionary objectForKey:@"title"];
-    NSLog(@"value is %@", value);
-    
-    
-   //регистрирую Root plist
-    [self registerDefaultsFromSettingsBundleWithPlist:@"Root"];
-    
-//    NSDictionary *defaultsSettings = @{kAutoUpdateKey : @YES,
-//                               kTimeCookKey : @5,
-//                               kFavoriteAlienKey : @"Vulcan",
-//                               kServerURLKey : @"google.com",
-//                                kServerPortNumberKey: @"8880"};
-//    
-//    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsSettings];
-    
-
-   return YES;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    [self populateRegistrationDomain];
+    return YES;
 }
-
-- (void)registerDefaultsFromSettingsBundleWithPlist:(NSString *)plist {
-    NSString *settingsBundle = [[NSBundle mainBundle] pathForResource:@"Settings" ofType:@"bundle"];
-    if(!settingsBundle) {
-        NSLog(@"Could not find Settings.bundle");
-        return;
-    }
-    NSString *bundle = [NSString stringWithFormat:@"%@.plist",plist];
-    NSDictionary *settings = [NSDictionary dictionaryWithContentsOfFile:[settingsBundle stringByAppendingPathComponent:bundle]];
-    NSArray *preferences = [settings objectForKey:@"Preference Items"];
-    
-    NSMutableDictionary *defaultsToRegister = [[NSMutableDictionary alloc] initWithCapacity:[preferences count]];
-    for(NSDictionary *prefSpecification in preferences) {
-        NSString *key = [prefSpecification objectForKey:@"Key"];
-        if(key) {
-            [defaultsToRegister setObject:[prefSpecification objectForKey:@"DefaultValue"] forKey:key];
+- (void)populateRegistrationDomain {
+    NSURL *settingsBundleURL = [[NSBundle mainBundle] URLForResource:@"Settings" withExtension:@"bundle"];
+    NSMutableDictionary *appDefaults = [NSMutableDictionary dictionary];
+    [self loadDefaults:appDefaults fromSettingsPage:@"Root.plist" inSettingsBundleAtURL:settingsBundleURL];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+- (void)loadDefaults:(NSMutableDictionary*)appDefaults fromSettingsPage:(NSString*)plistName inSettingsBundleAtURL:(NSURL*)settingsBundleURL {
+    NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfURL:[settingsBundleURL URLByAppendingPathComponent:plistName]];
+    NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
+    for (NSDictionary *prefItem in prefSpecifierArray)
+    {
+        NSString *prefItemType = prefItem[@"Type"];
+        NSString *prefItemKey = prefItem[@"Key"];
+        NSString *prefItemDefaultValue = prefItem[@"DefaultValue"];
+        if ([prefItemType isEqualToString:@"PSChildPaneSpecifier"])
+        {
+            NSString *prefItemFile = prefItem[@"File"];
+            [self loadDefaults:appDefaults fromSettingsPage:prefItemFile inSettingsBundleAtURL:settingsBundleURL];
+        }
+        else if (prefItemKey != nil && prefItemDefaultValue != nil)
+        {
+            [appDefaults setObject:prefItemDefaultValue forKey:prefItemKey];
         }
     }
-    
-    [[NSUserDefaults standardUserDefaults] registerDefaults:defaultsToRegister];
-    //[defaultsToRegister release];
-    
-    //http://stackoverflow.com/questions/1431148/iphone-app-how-to-get-default-value-from-root-plist
 }
 
 

@@ -19,40 +19,46 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self refreshFields];
+    [self onDefaultsChanged:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self onDefaultsChanged:nil];
     
     UIApplication *app = [UIApplication sharedApplication];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationWillEnterForeground:)
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:app];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onDefaultsChanged:)
+                                                 name:NSUserDefaultsDidChangeNotification
+                                               object:nil];
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:(BOOL)animated];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)refreshFields {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.autoUpdateSwitch.on = [defaults boolForKey:kAutoUpdateKey];
-    self.timeCookSlider.value = [defaults floatForKey:kTimeCookKey];
-    
-}
+
 
 - (IBAction)engineSwitchTapped {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:self.autoUpdateSwitch.on forKey:kAutoUpdateKey];
+    NSLog(@"autoUpdateSwitch %d",[defaults boolForKey:kAutoUpdateKey]);
     [defaults synchronize];
 }
 
 - (IBAction)warpSliderTouched {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setFloat:self.timeCookSlider.value forKey:kTimeCookKey];
+    NSLog(@"kTimeCookKey %d",[defaults boolForKey:kTimeCookKey]);
     [defaults synchronize];
 }
 
@@ -72,7 +78,20 @@
 - (void)applicationWillEnterForeground:(NSNotification *)notification {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults synchronize];
-    [self refreshFields];
 }
+- (IBAction)openApplicationSettings:(id)sender {
+   
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+}
+
+- (void)onDefaultsChanged:(NSNotification*)aNotification {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.autoUpdateSwitch.on =  [defaults boolForKey:kAutoUpdateKey];
+    self.timeCookSlider.value = [defaults integerForKey:kTimeCookKey];
+    [defaults synchronize];
+}
+
+
 
 @end

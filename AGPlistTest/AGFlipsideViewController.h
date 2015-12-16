@@ -20,9 +20,11 @@
 @property (weak, nonatomic) IBOutlet UISwitch *autoUpdateSwitch;
 @property (weak, nonatomic) IBOutlet UISlider *timeCookSlider;
 
-- (void)refreshFields;
+
 - (IBAction)engineSwitchTapped;
 - (IBAction)warpSliderTouched;
 - (IBAction)done:(id)sender;
+- (IBAction)openApplicationSettings:(id)sender;
+- (void)onDefaultsChanged:(NSNotification*)aNotification;
 
 @end
