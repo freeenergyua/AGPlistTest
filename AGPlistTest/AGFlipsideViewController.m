@@ -20,6 +20,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
     [self onDefaultsChanged:nil];
+    [self refreshFields];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -45,21 +46,27 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-
+- (void)refreshFields {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    self.autoUpdateSwitch.on  = [defaults boolForKey:kAutoUpdateKey];
+    self.timeCookSlider.value = [defaults floatForKey:kAutoUpdateKey];
+}
 
 
 - (IBAction)engineSwitchTapped {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setBool:self.autoUpdateSwitch.on forKey:kAutoUpdateKey];
+    [self onDefaultsChanged:nil];
     NSLog(@"autoUpdateSwitch %d",[defaults boolForKey:kAutoUpdateKey]);
-    [defaults synchronize];
+   
 }
 
 - (IBAction)warpSliderTouched {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setFloat:self.timeCookSlider.value forKey:kTimeCookKey];
+    [self onDefaultsChanged:nil];
     NSLog(@"kTimeCookKey %d",[defaults boolForKey:kTimeCookKey]);
-    [defaults synchronize];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -85,7 +92,6 @@
 }
 
 - (void)onDefaultsChanged:(NSNotification*)aNotification {
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.autoUpdateSwitch.on =  [defaults boolForKey:kAutoUpdateKey];
     self.timeCookSlider.value = [defaults integerForKey:kTimeCookKey];

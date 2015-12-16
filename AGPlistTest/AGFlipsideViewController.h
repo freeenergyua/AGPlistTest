@@ -26,5 +26,6 @@
 - (IBAction)done:(id)sender;
 - (IBAction)openApplicationSettings:(id)sender;
 - (void)onDefaultsChanged:(NSNotification*)aNotification;
+- (void)refreshFields;
 
 @end
