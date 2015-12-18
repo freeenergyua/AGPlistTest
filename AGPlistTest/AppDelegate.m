@@ -17,35 +17,35 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [self populateRegistrationDomain];
+//    [self populateRegistrationDomain];
     return YES;
 }
-- (void)populateRegistrationDomain {
-    NSURL *settingsBundleURL = [[NSBundle mainBundle] URLForResource:@"Settings" withExtension:@"bundle"];
-    NSMutableDictionary *appDefaults = [NSMutableDictionary dictionary];
-    [self loadDefaults:appDefaults fromSettingsPage:@"Root.plist" inSettingsBundleAtURL:settingsBundleURL];
-    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-}
-- (void)loadDefaults:(NSMutableDictionary*)appDefaults fromSettingsPage:(NSString*)plistName inSettingsBundleAtURL:(NSURL*)settingsBundleURL {
-    NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfURL:[settingsBundleURL URLByAppendingPathComponent:plistName]];
-    NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
-    for (NSDictionary *prefItem in prefSpecifierArray)
-    {
-        NSString *prefItemType = prefItem[@"Type"];
-        NSString *prefItemKey = prefItem[@"Key"];
-        NSString *prefItemDefaultValue = prefItem[@"DefaultValue"];
-        if ([prefItemType isEqualToString:@"PSChildPaneSpecifier"])
-        {
-            NSString *prefItemFile = prefItem[@"File"];
-            [self loadDefaults:appDefaults fromSettingsPage:prefItemFile inSettingsBundleAtURL:settingsBundleURL];
-        }
-        else if (prefItemKey != nil && prefItemDefaultValue != nil)
-        {
-            [appDefaults setObject:prefItemDefaultValue forKey:prefItemKey];
-        }
-    }
-}
+//- (void)populateRegistrationDomain {
+//    NSURL *settingsBundleURL = [[NSBundle mainBundle] URLForResource:@"Settings" withExtension:@"bundle"];
+//    NSMutableDictionary *appDefaults = [NSMutableDictionary dictionary];
+//    [self loadDefaults:appDefaults fromSettingsPage:@"Root.plist" inSettingsBundleAtURL:settingsBundleURL];
+//    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+//    [[NSUserDefaults standardUserDefaults] synchronize];
+//}
+//- (void)loadDefaults:(NSMutableDictionary*)appDefaults fromSettingsPage:(NSString*)plistName inSettingsBundleAtURL:(NSURL*)settingsBundleURL {
+//    NSDictionary *settingsDict = [NSDictionary dictionaryWithContentsOfURL:[settingsBundleURL URLByAppendingPathComponent:plistName]];
+//    NSArray *prefSpecifierArray = [settingsDict objectForKey:@"PreferenceSpecifiers"];
+//    for (NSDictionary *prefItem in prefSpecifierArray)
+//    {
+//        NSString *prefItemType = prefItem[@"Type"];
+//        NSString *prefItemKey = prefItem[@"Key"];
+//        NSString *prefItemDefaultValue = prefItem[@"DefaultValue"];
+//        if ([prefItemType isEqualToString:@"PSChildPaneSpecifier"])
+//        {
+//            NSString *prefItemFile = prefItem[@"File"];
+//            [self loadDefaults:appDefaults fromSettingsPage:prefItemFile inSettingsBundleAtURL:settingsBundleURL];
+//        }
+//        else if (prefItemKey != nil && prefItemDefaultValue != nil)
+//        {
+//            [appDefaults setObject:prefItemDefaultValue forKey:prefItemKey];
+//        }
+//    }
+//}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {

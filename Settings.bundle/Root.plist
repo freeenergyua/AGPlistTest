@@ -8,6 +8,14 @@
 	<array>
 		<dict>
 			<key>Type</key>
+			<string>PSTitleValueSpecifier</string>
+			<key>Title</key>
+			<string>URL</string>
+			<key>Key</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
 			<string>Settings</string>
@@ -54,7 +62,7 @@
 			<key>Title</key>
 			<string>AutoUpdate</string>
 			<key>Key</key>
-			<string>kAutoUpdateKey</string>
+			<string>autoUpdate</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>
@@ -68,7 +76,7 @@
 			<key>Type</key>
 			<string>PSSliderSpecifier</string>
 			<key>Key</key>
-			<string>kTimeCookKey</string>
+			<string>timeCookFactor</string>
 			<key>DefaultValue</key>
 			<integer>1</integer>
 			<key>MinimumValue</key>

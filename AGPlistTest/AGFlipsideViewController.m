@@ -25,7 +25,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self onDefaultsChanged:nil];
+    [self refreshFields];
+    [self loadPersistentData:self];
     
     UIApplication *app = [UIApplication sharedApplication];
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -33,11 +34,30 @@
                                                  name:UIApplicationWillEnterForegroundNotification
                                                object:app];
     
+}
+- (void) awakeFromNib {
+    [self refreshFields];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onDefaultsChanged:)
                                                  name:NSUserDefaultsDidChangeNotification
                                                object:nil];
-    
+}
+
+//1
+- (void)savePersistentData:(id)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:self.autoUpdateSwitch.on forKey:kAutoUpdateKey];
+    [userDefaults setFloat:self.timeCookSlider.value forKey:kTimeCookKey];
+    //Save Changes
+    [userDefaults synchronize];
+}
+//1
+- (void)loadPersistentData:(id)sender {
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    self.timeCookSlider.value = [userDefaults floatForKey:kAutoUpdateKey];
+    self.autoUpdateSwitch.on  = [userDefaults boolForKey:kAutoUpdateKey];
+    [userDefaults synchronize];
+
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -46,10 +66,12 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self name:NSUserDefaultsDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 - (void)refreshFields {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.autoUpdateSwitch.on  = [defaults boolForKey:kAutoUpdateKey];
     self.timeCookSlider.value = [defaults floatForKey:kAutoUpdateKey];
+    [defaults synchronize];
 }
 
 
@@ -58,6 +80,7 @@
     [defaults setBool:self.autoUpdateSwitch.on forKey:kAutoUpdateKey];
     [self onDefaultsChanged:nil];
     NSLog(@"autoUpdateSwitch %d",[defaults boolForKey:kAutoUpdateKey]);
+    [defaults synchronize];
    
 }
 
@@ -65,7 +88,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setFloat:self.timeCookSlider.value forKey:kTimeCookKey];
     [self onDefaultsChanged:nil];
-    NSLog(@"kTimeCookKey %d",[defaults boolForKey:kTimeCookKey]);
+    NSLog(@"kTimeCookKey %f",[defaults floatForKey:kTimeCookKey]);
     
 }
 
@@ -96,8 +119,7 @@
     self.autoUpdateSwitch.on =  [defaults boolForKey:kAutoUpdateKey];
     self.timeCookSlider.value = [defaults integerForKey:kTimeCookKey];
     [defaults synchronize];
+
 }
-
-
 
 @end

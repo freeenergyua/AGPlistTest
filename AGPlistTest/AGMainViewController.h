@@ -15,8 +15,7 @@
 #define kTimeCookKey                   @"timeCookFactor"
 #define kServerURLKey                  @"serverUrl"
 #define kServerPortNumberKey           @"portName"
-#define kFavoriteGadgetKey             @"favoriteGadget"
-#define kFavoriteAlienKey              @"favoriteAlien"
+
 
 @interface AGMainViewController : UIViewController <AGFlipsideViewControllerDelegate>
 
